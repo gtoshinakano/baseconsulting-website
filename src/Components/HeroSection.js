@@ -27,5 +27,4 @@ const Container = styled.div`
   background-size: cover;
 
   color: white;
-  }
 `
