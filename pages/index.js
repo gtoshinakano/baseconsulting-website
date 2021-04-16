@@ -5,6 +5,9 @@ import { useTranslation } from 'next-i18next'
 import Link from "next/link"
 import { Router, useRouter } from 'next/dist/client/router'
 
+//Components Imports
+import {TopNav} from '@Commons'
+
 function Home() {
 
   const router = useRouter()
@@ -17,7 +20,9 @@ function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      
+      <nav>
+        <TopNav />
+      </nav>
 
       <main>
         
