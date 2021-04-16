@@ -1,7 +1,15 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
+import Link from "next/link"
+import { Router, useRouter } from 'next/dist/client/router'
 
-export default function Home() {
+function Home() {
+
+  const router = useRouter()
+  const { t } = useTranslation('common')
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -11,7 +19,12 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          <Link
+            href="/"
+            locale={router.locale}  
+          >
+            {t('h1')}
+          </Link>
         </h1>
 
         <p className={styles.description}>
@@ -63,3 +76,11 @@ export default function Home() {
     </div>
   )
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'footer']),
+  }
+})
+
+export default Home
