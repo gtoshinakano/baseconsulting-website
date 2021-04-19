@@ -16,7 +16,8 @@ const TopNav = () => {
             height={110}
           />
         </Logo>
-        <Bar />
+        <Bar>
+				</Bar>
 			</Container>
 		</nav>
 	)
