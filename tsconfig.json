@@ -11,8 +11,8 @@
       "@Commons": [
         "./src/Components/Commons"
       ],
-      "@Definitions/*": [
-        "./src/Definitions/*"
+      "@Assets/*": [
+        "./public/assets/*"
       ],
       "@Definitions": [
         "./src/Definitions"

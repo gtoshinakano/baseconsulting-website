@@ -20,9 +20,9 @@ function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <nav>
+      <header>
         <TopNav />
-      </nav>
+      </header>
 
       <main>
         
