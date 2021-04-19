@@ -27,7 +27,6 @@ function Home() {
 
       <main>
         <HomeHero />
-        sdfsdf
       </main>
 
       <footer>
