@@ -10,10 +10,10 @@ const TopNav = () => {
 				<Bar />
 
         <Logo>
-          <Image 
+          <img 
             src="/assets/images/top-logo.png"
-            width={100}
-            height={100}
+            width={110}
+            height={110}
           />
         </Logo>
         <Bar />
@@ -31,8 +31,10 @@ const Container = styled.div`
 `
 const Logo = styled.div`
   margin-top: 12px;
-  border: 8px solid white;
-  
+	z-index: 1000;
+	img{
+		border: 8px solid white;
+	}
 `
 
 const Bar = styled.div`
