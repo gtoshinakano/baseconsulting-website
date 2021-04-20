@@ -10,19 +10,16 @@ const HomeHero = () => {
 
   const cover = useRef(null);
   const main = useRef(null);
-  const scrollDist = useRef(null);
-  const content = useRef(null)
   const {t} = useTranslation()
 
   useEffect(() => {
 
-    gsap.set(main.current, {position:'fixed', background:'#fff', width:'100%', maxWidth:'1900px', height:'100%', top:0, left:'50%', x:'-50%'})
-    gsap.set(scrollDist.current, {width:'100%', height:'150vh'})
+    gsap.set(main.current, {width:'100%', maxWidth:'1900px', height:'100%', top:0, overflow:"hidden"})
     gsap.timeline({
-        scrollTrigger:{
-        trigger:scrollDist.current, 
+      scrollTrigger:{
+        trigger: cover.current,
         start:'top top', 
-        end:'bottom bottom', 
+        end:150, 
         scrub:1,
       }
     })
@@ -33,13 +30,14 @@ const HomeHero = () => {
         .fromTo('.mountBg', {y:-10},{y:-100}, 0)
         .fromTo('.mountMg', {y:-30},{y:-250}, 0)
         .fromTo('.mountFg', {y:-50},{y:-600}, 0)
-        .fromTo('.txt2', {opacity:1},{opacity:-1, scrollTrigger: {
-          trigger: '.txt2',
-          endTrigger: '.main',
-          start: "bottom top",
+        .to(main.current, {y:-400, scrollTrigger: {
+          trigger: cover.current,
+          start: "top top",
+          end: 400,
           scrub: 1,
-          toggleActions: "play none reset reset"
-        }}, "+=1")
+          toggleActions: "none none none none"
+        }})
+       
         
   }, [])
 
@@ -48,12 +46,11 @@ const HomeHero = () => {
 
   return(
     <Container ref={cover}>
-      <div className="scrollDist" ref={scrollDist}></div>
       <div className="main" ref={main}>
-        <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" >
           <mask id="m">
             <g className="cloud1">
-              <rect fill="#fff" width="100%" height="801" y="799" />
+              <rect fill="#fff" width="100%" height="801" y="799" className="rect1" />
               <image xlinkHref="https://assets.codepen.io/721952/cloud1Mask.jpg" width="1200" height="800"/>
             </g>
           </mask>
@@ -69,7 +66,7 @@ const HomeHero = () => {
           <polyline className="arrow" fill="#fff" points="599,250 599,289 590,279 590,282 600,292 610,282 610,279 601,289 601,250" />
           
           <g mask="url(#m)">
-            <rect fill="#fff" width="100%" height="100%" />      
+            <rect fill="#fff" width="100%" height="100%" className="rect2" />      
             <Text x="50%" y="200" fill="#162a43" alignmentBaseline="middle" textAnchor="middle" className="txt2">{t("welcome")}</Text>
           </g>
           
@@ -83,18 +80,10 @@ const HomeHero = () => {
 
 const Container = styled.div`
   width: 100%;
-  background-image: url(/assets/images/tree.webp);
-  background-attachment: fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  transition: all 1s linear;
-  position: absolute;
 `
 
 const Text = styled.text`
-  font-size: 50px;
+  font-size: 45px;
   font-family: "Cabin";
   font-weight: 700;
 `

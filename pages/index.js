@@ -8,6 +8,7 @@ import { Router, useRouter } from 'next/dist/client/router'
 //Components Imports
 import {TopNav} from '@Commons'
 import HomeHero from '@Components/HomeHero'
+import About from '@Components/About'
 
 function Home() {
 
@@ -27,6 +28,7 @@ function Home() {
 
       <main>
         <HomeHero />
+        <About/>
       </main>
 
       <footer>
